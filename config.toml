@@ -1,6 +1,6 @@
 baseurl = "https://vloginov.github.io/blog/"
 languageCode = "ru"
-title = "Steam - a minimal theme for Hugo"
+title = "Вадим Логинов - Блог"
 theme = "hugo-steam-theme"
 disqusShortname = "spf13"
 # Enable Google Analytics be inserting your tracking code
@@ -11,7 +11,7 @@ publishDir = "docs"
 
 [params]
 	title = "Вадим Логинов"
-	subtitle = "Убегая от говнокода"
+	subtitle = "Очередной блог о фронтенде"
 	copyright = "Released under the MIT license."
 
 	# You can choose between green, orange, red and blue.
