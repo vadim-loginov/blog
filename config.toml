@@ -11,7 +11,7 @@ publishDir = "docs"
 
 [params]
 	title = "Вадим Логинов"
-	subtitle = "Очередной блог о фронтенде"
+	subtitle = "Заметки о фронтенде"
 	copyright = "Released under the MIT license."
 
 	# You can choose between green, orange, red and blue.
