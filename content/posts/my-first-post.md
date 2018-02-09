@@ -5,4 +5,4 @@ draft: false
 menu: "main"
 ---
 
-This is a test page
+This is a test page.
