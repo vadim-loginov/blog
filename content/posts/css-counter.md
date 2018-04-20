@@ -26,13 +26,10 @@ body {
   counter-reset: section;
 }
 h1::before {
-  /* выводим значение счетчика в псевдоэлементе */
+  /* выводим счётчик в псевдоэлементе */
   content: counter(section) '. ';
-  /* инкрементируем счетчик */
+  /* инкрементируем его */
   counter-increment: section;
-}
-output::after {
-  content: counter(section);
 }
 ```
 

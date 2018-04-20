@@ -21,7 +21,7 @@
       <description>На чистом CSS мы можем подсчитывать количество чего-либо на странице, выводить это количество, проставлять порядковые номера. Не нужно писать никакого JS и это отлично поддерживается
 Нумеруем заголовки Нужно проставить порядковый номер перед каждым заголовком? Проще простого! Допустим, структура следующая:
 &amp;lt;section&amp;gt; &amp;lt;h1&amp;gt;Овощи&amp;lt;/h1&amp;gt; &amp;lt;/section&amp;gt; &amp;lt;section&amp;gt; &amp;lt;h1&amp;gt;Фрукты&amp;lt;/h1&amp;gt; &amp;lt;/section&amp;gt;  Чтобы браузер самостоятельно проделал за нас рутинную работу и пронумеровал заголовки, пишем следующие стили
-body { /* создаём/обнуляем счетчик по имени section */ counter-reset: section; } h1::before { /* выводим значение счетчика в псевдоэлементе */ content: counter(section) &#39;.</description>
+body { /* создаём/обнуляем счетчик по имени section */ counter-reset: section; } h1::before { /* выводим счётчик в псевдоэлементе */ content: counter(section) &#39;.</description>
     </item>
     
   </channel>
