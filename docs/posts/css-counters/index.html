@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>CSS Counters &middot; Вадим Логинов</title>
+    <meta name="author" content="Vadim Loginov">
+    <meta name="description" content="Your description of the blog">
+    <meta name="generator" content="Hugo 0.34" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- RSS autodiscovery -->
+    
+
+    <link rel="shortcut icon" href="https://vloginov.github.io/blog/img/favicon.ico">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://vloginov.github.io/blog/css/screen.css">
+    <link rel="stylesheet" href="https://vloginov.github.io/blog/css/github.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+    
+
+    
+    <link rel="shortcut icon" type="image/x-icon" href="https://vloginov.github.io/blog/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://vloginov.github.io/blog/favicon.ico">
+    
+
+    <!-- Stylesheet for theme color -->
+    <style type="text/css">
+    a, a:visited {color: #33cc99;}
+    .pagination a {color: #33cc99;}
+    .gist .gist-file .gist-meta a:visited {color: #33cc99 !important;}
+    a:focus, a:hover {color: #178b6b;}
+    h1.post-title a:focus, h1.post-title a:hover, h1.blog-title a:focus, h1.blog-title a:hover {color: #178b6b;}
+    .older-posts:hover, .newer-posts:hover {color: #178b6b;}
+</style>
+</head>
+
+<body class="home-template">
+    <header id="site-head">
+	
+	<h1 class="blog-title"><a href="https://vloginov.github.io/blog/">Вадим Логинов</a></h1>
+	
+	
+	<h1 class="blog-subtitle">Заметки о фронтенде</h1>
+	
+</header>
+    
+<nav class="menu" role="nav">
+    <ul>
+        
+        	<li class="nav nav-current"><a href="/blog/posts/css-counters/">CSS Counters</a></li>
+      	
+    </ul>
+</nav>
+
+    
+    <main class="content" role="main">
+    
+<article class="post">
+    <header>
+        <h1 class="post-title">CSS Counters</h1>
+        <div class="post-meta">
+            <time datetime="08 February 2018">
+                08 February 2018
+            </time>
+        </div>
+    </header>
+
+    <section class="post-content">
+        
+
+<p>На чистом CSS мы можем подсчитывать количество чего-либо на странице, выводить это количество, проставлять порядковые номера. Не нужно писать никакого JS и это отлично <a href="https://caniuse.com/#feat=css-counters">поддерживается</a></p>
+
+<h1 id="нумеруем-заголовки">Нумеруем заголовки</h1>
+
+<p>Нужно проставить порядковый номер перед каждым заголовком? Проще простого! Допустим, структура следующая:</p>
+
+<pre><code>&lt;section&gt;
+  &lt;h1&gt;Овощи&lt;/h1&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+  &lt;h1&gt;Фрукты&lt;/h1&gt;
+&lt;/section&gt;
+</code></pre>
+
+<p>Чтобы браузер самостоятельно проделал за нас рутинную работу и пронумеровал заголовки, пишем следующие стили</p>
+
+<pre><code>body {
+  /* создаём/обнуляем счетчик по имени section */
+  counter-reset: section;
+}
+h1::before {
+  /* выводим счётчик в псевдоэлементе */
+  content: counter(section) '. ';
+  /* инкрементируем его */
+  counter-increment: section;
+}
+</code></pre>
+
+<p>В итогде получаем:</p>
+
+<p><p data-height="265" data-theme-id="light" data-slug-hash="yjNGeq" data-default-tab="result" data-user="vloginov" data-embed-version="2" data-pen-title="CSS Counters 1" class="codepen">See the Pen <a href="https://codepen.io/vloginov/pen/yjNGeq/">CSS Counters 1</a> by Vadim (<a href="https://codepen.io/vloginov">@vloginov</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script></p>
+
+<p>Как это работает?
+Сначала нужно счётчик создать. В данном случае мы делаем это в body.
+Затем счетчик инкрементируется каждый раз при создании псевдоэлемента заголовка. Там же и выводится.</p>
+
+<h1 id="двухуровневая-нумерация">Двухуровневая нумерация</h1>
+
+<p>Что если мы хотим получить такое?</p>
+
+<hr />
+
+<h3 id="1-овощи">1. Овощи</h3>
+
+<ul>
+<li>1.1. Помидоры</li>
+<li>1.2. Огурцы</li>
+<li>1.3. Капуста</li>
+</ul>
+
+<h3 id="2-фрукты">2. Фрукты</h3>
+
+<ul>
+<li>2.1. Яблоки</li>
+<li>2.2. Груши</li>
+<li>2.3. Бананы</li>
+</ul>
+
+<hr />
+
+<p>Нужно всего-лишь использовать два счетчика. Полный пример:</p>
+
+<p><p data-height="421" data-theme-id="light" data-slug-hash="GdJPpj" data-default-tab="html,result" data-user="vloginov" data-embed-version="2" data-pen-title="CSS Counters" class="codepen">See the Pen <a href="https://codepen.io/vloginov/pen/GdJPpj/">CSS Counters</a> by Vadim (<a href="https://codepen.io/vloginov">@vloginov</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script></p>
+
+<p>Логика та же, появилась лишь дополнительная переменная <code>section-item</code>, которая обнуляется в каждом разделе. Таким образом, у каждого раздела свой отсчёт.</p>
+
+<p>Если бы я знал это раньше, не стал бы мучиться с пробросом $index переменной из родительского repeat во вложенный на Angular.js, а сделал бы на чистом CSS, сэкономив время и не засоряя код. Ученье - свет 😉</p>
+
+    </section>
+
+    
+</article>
+
+    </main>
+
+    <footer class="site-footer">
+	<div class="inner">
+		<section class="footer-social">
+      
+      
+      
+      
+      
+      
+      <a href="//github.com/vloginov" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp;
+      
+      
+      
+      
+  </section>
+
+		<section class="copyright">&copy; 2018 <a href="https://vloginov.github.io/blog/">Vadim Loginov</a>. Released under the MIT license.</section>
+	</div>
+</footer>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://vloginov.github.io/blog/js/index.js"></script>
+<script src="https://vloginov.github.io/blog/js/smooth-scroll.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+
+
+<script>
+    smoothScroll.init({
+        speed: 800,
+        easing: 'easeInOutCubic',
+        updateURL: false,
+        offset: 125,
+    });
+</script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>
