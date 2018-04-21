@@ -24,9 +24,9 @@ publishDir = "docs"
 
 	# To provide some metadata for search engines and the about section in the footer
 	# feel free to add a few information about you and your website.
-	name = "Vadim Loginov"
-	bio = "programmer - blogger - coffee aficionado"
-	description = "Your description of the blog"
+	name = "Вадим Логинов"
+	bio = "фронтендер - муж - отец - чаехлёб"
+	description = "Блог о фронтенде"
 
 	# Link your social networks (optional)
 	location = ""
